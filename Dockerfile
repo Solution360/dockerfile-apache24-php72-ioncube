@@ -3,14 +3,14 @@ FROM debian:9
 RUN apt-get clean
 
 RUN apt-get update
-RUN apt-get -y install wget curl apt-transport-https apache2 unzip
+RUN apt-get -y install wget curl apt-transport-https apache2 unzip redis-server
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
 
 RUN apt-get update
 
-RUN apt-get -y install  php7.2 php7.2-curl php7.2-gd php7.2-mbstring php7.2-imagick php7.2-mysql php7.2-xdebug php7.2-simplexml php7.2-zip php7.2-soap php7.2-apcu php-apcu-bc
+RUN apt-get -y install  php7.2 php7.2-redis php7.2-curl php7.2-gd php7.2-mbstring php7.2-imagick php7.2-mysql php7.2-xdebug php7.2-simplexml php7.2-zip php7.2-soap php7.2-apcu php-apcu-bc
 
 #configure apache
 RUN ["bin/bash", "-c", "sed -i 's/AllowOverride None/AllowOverride All\\nSetEnvIf X-Forwarded-Proto https HTTPS=on/g' /etc/apache2/apache2.conf"]
