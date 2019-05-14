@@ -10,7 +10,7 @@ RUN echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.li
 
 RUN apt-get update
 
-RUN apt-get -y install  php7.2 php7.2-redis php7.2-curl php7.2-gd php7.2-mbstring php7.2-imagick php7.2-mysql php7.2-xdebug php7.2-simplexml php7.2-zip php7.2-soap php7.2-apcu php-apcu-bc php7.2-sqlite3
+RUN apt-get -y install  php7.2 php7.2-redis php7.2-curl php7.2-gd php7.2-mbstring php7.2-imagick php7.2-mysql php7.2-xdebug php7.2-simplexml php7.2-zip php7.2-soap php7.2-apcu php-apcu-bc php7.2-sqlite3 php7.2-intl
 
 #configure apache
 RUN ["bin/bash", "-c", "sed -i 's/AllowOverride None/AllowOverride All\\nSetEnvIf X-Forwarded-Proto https HTTPS=on/g' /etc/apache2/apache2.conf"]
